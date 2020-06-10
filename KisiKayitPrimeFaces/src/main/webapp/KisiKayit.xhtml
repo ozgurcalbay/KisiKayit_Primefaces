@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:c="http://xmlns.jcp.org/jsp/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<h:outputStylesheet library="css" name="file.css" />
+<title>Insert title here</title>
+</h:head>
+<h:body>
+<p:graphicImage library="images" name="bilgeadam.png" width="200"  />
+<h:form id="form">
+<h1>Kisi Bilgileri</h1>
+<p:panel header="Kisi Bilgileri">
+
+<h:panelGrid columns="2">
+<p:outputLabel value="Name" />
+<p:inputText value="#{bean.kisi.name}" size="50" />
+<p:outputLabel value="E-mail" />
+<p:inputText value="#{bean.kisi.email}" size="50" />
+
+<p:outputPanel/>
+<p:commandButton value="Ekle" action="#{bean.ekle}" update="form kisiTablosu"/>
+
+</h:panelGrid>
+</p:panel>
+ </h:form>
+ <h1>Kisi Listesi</h1>
+ <p:dataTable value="#{bean.kisiler}" var="k" border="1" id="kisiTablosu" >
+ <p:column headerText="Name">#{k.name}</p:column>
+ <p:column headerText="E-mail">#{k.email}</p:column>
+ <p:column headerText="Duzenle" width="80">
+ <p:button value="Duzenle" outcome="/sayfalar/basarili.xhtml?parametre=#{k.name}" />
+ 
+ </p:column>
+ </p:dataTable>
+ <h:form id="form1">
+ <p:toolbar>
+ <f:facet name="left">
+ <p:button value="Yeni" icon="ui-icon-document"></p:button>
+</f:facet>
+ 
+ </p:toolbar>
+ 
+ </h:form>
+ 
+ 
+</h:body>
+</html>
